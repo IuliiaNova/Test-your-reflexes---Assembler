@@ -1,5 +1,5 @@
 :root{ 
-    --height-window-game-cards: 98vh;
+    --height-window-game-cards: 90vh;
     --width-window-game-cards: ;
   }
 
@@ -10,18 +10,22 @@ html{
 }
 
 main{
+    max-height: 90vh;
     width: 90vw;
     margin: 0 auto;
     display: grid;
     grid-template-columns: 75% 20%;
     justify-content: space-around;
     background-color: turquoise;
+     overflow-y: hidden; 
 }
 
 #windowGame{
     display: grid;
     grid-template-rows: auto auto auto auto auto;
     background-color: white;
+    
+
 }
 
 #gameUsername{
