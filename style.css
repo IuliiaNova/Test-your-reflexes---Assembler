@@ -17,15 +17,14 @@ main{
     grid-template-columns: 75% 20%;
     justify-content: space-around;
     background-color: turquoise;
-     overflow-y: hidden; 
+    overflow-y: hidden; 
 }
 
 #windowGame{
     display: grid;
     grid-template-rows: auto auto auto auto auto;
     background-color: white;
-    
-
+    border-radius: 10px;
 }
 
 #gameUsername{
@@ -66,11 +65,12 @@ main{
 
 #gameStopGame{
     display: grid;
-    grid-template-rows: auto auto auto;
+    grid-template-columns: auto auto auto;
+    gap: 2rem;
     justify-content: space-around;
     align-content: center;
     height: var(--height-window-game-cards);
-    width: var(--width-window-game-cards);
+    width: var(--width-window-game-cards); 
 }
 
 #gameScore{
@@ -88,6 +88,7 @@ main{
     grid-template-rows: 9.09% 9.09% 9.09% 9.09% 9.09% 9.09% 9.09% 9.09% 9.09% 9.09% 9.09%;
     background-color: white;
     justify-content: center;
+    border-radius: 10px;
 }
 
 .score-position p, .score-position h1{
