@@ -16,7 +16,7 @@ startGameButton.addEventListener("click", startGame);
 function nextPageToRules(){
     if (usernameCorrect = true) {
         dataObject.username = chooseUsernameInput.value;
-        localStorage.setItem("username",JSON.stringify(dataObject.username))
+        localStorage.setItem("username", JSON.stringify(dataObject.username))
         windowGame.style.transitionDuration = "1s";
         windowGame.style.transform = "translateY(-90vh)";
     } 
