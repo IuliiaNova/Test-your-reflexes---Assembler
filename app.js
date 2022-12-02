@@ -1,5 +1,5 @@
 let windowGame = document.querySelector("#windowGame");
-let startButton = document.querySelector("#usernameButton");
+let usernameButton = document.querySelector("#usernameButton");
 let startGameButton = document.querySelector("#startGameButton");
 let gameUsername = document.querySelector("#gameUsername");
 let gameStartGame = document.querySelector("#gameStartGame");
@@ -10,17 +10,8 @@ let dataObject = new Object();
 let counterValidationUsername = false;
 let usernameCorrect = false;
 
-startButton.addEventListener("click", nextPageToRules);
+usernameButton.addEventListener("click", nextPageToRules);
 startGameButton.addEventListener("click", startGame);
-
-function nextPageToRules(){
-    if (usernameCorrect = true) {
-        dataObject.username = chooseUsernameInput.value;
-        localStorage.setItem("username", JSON.stringify(dataObject.username))
-        windowGame.style.transitionDuration = "1s";
-        windowGame.style.transform = "translateY(-90vh)";
-    } 
-}
 
 function startGame(){
     windowGame.style.transitionDuration = "1s";
@@ -37,7 +28,7 @@ chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 
 function invalidUsernameOut() {
-    if (patternUsername.test(chooseUsernameInput.value)) {
+    if (patternUsername.test(chooseUsernameInput.value)||chooseUsernameInput.value=="") {
         let text = "Invalid username. Do not use special characters.";
         let paragraphInvalidUsername = document.createElement("p");
         paragraphInvalidUsername.setAttribute("class", "color-paragraph-username");
@@ -58,4 +49,13 @@ function invalidUsernameIn() {
         colorParagraphUsername.remove();
         counterValidationUsername = false;
     }
+}
+
+function nextPageToRules(){
+    if (usernameCorrect == true) {
+        dataObject.username = chooseUsernameInput.value;
+        localStorage.setItem("username", JSON.stringify(dataObject.username))
+        windowGame.style.transitionDuration = "1s";
+        windowGame.style.transform = "translateY(-90vh)";
+    } 
 }
