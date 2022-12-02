@@ -95,3 +95,15 @@ main{
     padding: 0;
     margin: 0;
 }
+
+#stopGameButtonOne{
+    color: red;
+}
+
+#stopGameButtonTwo{
+    color: blue;
+}
+
+#stopGameButtonThree{
+    color: green;
+}

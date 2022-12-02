@@ -13,6 +13,7 @@ let stopGameButtonOne = document.querySelector("#stopGameButtonOne");
 let stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
 let stopGameButtonThree = document.querySelector("#stopGameButtonThree");
 let playAgainButton = document.querySelector("#playAgainButton");
+let gameStopGame = document.querySelector("#gameStopGame"); 
 
 
 startButton.addEventListener("click", nextPageToRules);
@@ -21,6 +22,8 @@ stopGameButtonOne.addEventListener("click", finishGame);
 stopGameButtonTwo.addEventListener("click", finishGame);
 stopGameButtonThree.addEventListener("click", finishGame);
 playAgainButton.addEventListener("click", comeBackToFierstPage);
+
+gameStopGame.addEventListener("click", playGame);  //buscar otra manera de buscar
 
 
 function nextPageToRules(){
@@ -36,13 +39,25 @@ function startGame(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.transform = "translateY(-180vh)";
     setTimeout(getReady, 5000); 
-    playGame();
 }
 
 function getReady(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.transform = "translateY(-270vh)";
 }
+
+//añade elemento pero por abajo. convertir color a [] 
+
+function playGame(){
+    let color = "REG";
+    let colorTextOut = document.createElement("p");
+    colorTextOut.innerHTML = `${color}`;
+    gameStopGame.appendChild(colorTextOut)
+}
+
+/*function playGame(){}*/
+
+
 
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
@@ -72,9 +87,14 @@ function invalidUsernameIn() {
 }
 
 
-function playGame(){
-    stopGameButtonOne.style.color = "red";
-}
+
+
+
+
+
+
+
+
 
 function finishGame(){
     windowGame.style.transitionDuration = "1s";
