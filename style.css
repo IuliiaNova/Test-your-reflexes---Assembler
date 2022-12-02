@@ -36,9 +36,17 @@ main{
     width: var(--width-window-game-cards);
 }
 
+#invalidUsername{
+    color: crimson;
+    display: none;
+}
+#invalidUsername.invalidUsernameAppear{
+    color: crimson;
+    display: block;
+}
 #gameUsernameForm{
     display: grid;
-    grid-template-rows: 15% 15% 15%;
+    grid-template-rows: 15% 15% 15%; 
     justify-content: space-around;
 }
 
