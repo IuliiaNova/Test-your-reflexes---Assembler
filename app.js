@@ -9,14 +9,24 @@ let patternUsername = /[ `!@#$%^&*()+=\[\]{};':"\\|,.<>\/?]/;
 let dataObject = new Object();
 let counterValidationUsername = false;
 let usernameCorrect = false;
+let stopGameButtonOne = document.querySelector("#stopGameButtonOne");
+let stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
+let stopGameButtonThree = document.querySelector("#stopGameButtonThree");
+let playAgainButton = document.querySelector("#playAgainButton");
+
 
 startButton.addEventListener("click", nextPageToRules);
 startGameButton.addEventListener("click", startGame);
+stopGameButtonOne.addEventListener("click", finishGame);
+stopGameButtonTwo.addEventListener("click", finishGame);
+stopGameButtonThree.addEventListener("click", finishGame);
+playAgainButton.addEventListener("click", comeBackToFierstPage);
+
 
 function nextPageToRules(){
     if (usernameCorrect = true) {
         dataObject.username = chooseUsernameInput.value;
-        localStorage.setItem("username", JSON.stringify(dataObject.username))
+        localStorage.setItem("username", JSON.stringify(dataObject.username));
         windowGame.style.transitionDuration = "1s";
         windowGame.style.transform = "translateY(-90vh)";
     } 
@@ -26,6 +36,7 @@ function startGame(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.transform = "translateY(-180vh)";
     setTimeout(getReady, 5000); 
+    playGame();
 }
 
 function getReady(){
@@ -58,4 +69,19 @@ function invalidUsernameIn() {
         colorParagraphUsername.remove();
         counterValidationUsername = false;
     }
+}
+
+
+function playGame(){
+    stopGameButtonOne.style.color = "red";
+}
+
+function finishGame(){
+    windowGame.style.transitionDuration = "1s";
+    windowGame.style.transform = "translateY(-360vh)";
+}
+
+function comeBackToFierstPage(){
+    windowGame.style.transitionDuration = "1s";
+    windowGame.style.transform = "translateY(0)";
 }
