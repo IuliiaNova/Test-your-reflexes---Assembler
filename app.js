@@ -29,7 +29,7 @@ let maxWait=20;
 let timerID;
 
 
-startButton.addEventListener("click", nextPageToRules);
+startGameButton.addEventListener("click", nextPageToRules);
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
 stopGameButtonTwo.addEventListener("click", finishGame);
