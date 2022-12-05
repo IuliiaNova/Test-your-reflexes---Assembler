@@ -8,6 +8,10 @@
     font-family: 'Play', sans-serif;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 html{
     width: 100vw;
     height: 100vh;
@@ -39,7 +43,7 @@ main{
 
 #windowGame{
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 100%;
     background-color: black;
     border-radius: 25px;
     width: 100%;
@@ -110,6 +114,7 @@ svg{
     background-color: #D9BB2B;
     letter-spacing: 0.3rem;
     text-transform: uppercase;
+    font-weight: 700;
 }
 
 #invalidUsername{
@@ -125,20 +130,97 @@ svg{
 
 #gameStartGame{
     display: none;
-    grid-template-rows: 10% 10% 5%;
+    grid-template-rows: 15% 10% 30% auto;
+    grid-template-columns: 40vw;
     justify-content: center;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
 }
 
+#gameStartGame h2{
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2rem;
+    color: #0D2673;
+    padding: 0;
+    margin: 0;
+}
+
+#gameStartGame p{
+  /*   line-height: 1.5rem; */
+    color: rgb(223, 223, 223);
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: justify;
+    text-justify: inter-word;
+    width: 70%;
+}
+
+#startGameButton{
+    /* margin-top: 6rem; */
+    height: 2rem;
+    border-radius: 10px;
+    border: none;
+    color: #0D2673;
+    background-color: #D9BB2B;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    width: 70%;
+    font-weight: 700;
+}
+
 #gameGetReady{
     display: none;
-    justify-content: space-around;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    justify-content: center;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
+    padding: 0;
+    margin: 0;
 }
+
+#gameGetReady p{
+    height: 3rem;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.5rem;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+#getReadyCountDown{
+    color: #0D2673;
+    display: grid;
+}
+
+#oneCountDown{
+    display: none;
+    color: lightgreen;
+    animation: 1s countDown infinite;
+}
+
+#twoCountDown{
+    display: none;
+    color: orange;
+    animation: 1s countDown infinite;
+}
+
+#threeCountDown{
+    display: none;
+    color: red;
+    animation: 1s countDown infinite;
+}
+
+@keyframes countDown {
+    0% {font-size: 0;}
+    100% {transform: translate(-1vw, -18vh); font-size: 15rem;}
+  }
+
 
 #gameStopGame{
     display: none;
@@ -148,7 +230,7 @@ svg{
     justify-content: space-around;
     align-content: center;
     height: var(--height-window-game-cards);
-    width: var(--width-window-game-cards); 
+    width: var(--width-window-game-cards);
 }
 
 #pushColor{

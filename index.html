@@ -34,15 +34,19 @@
                     <input type="text" id="chooseUsernameInput" name="username" class="game-username-form-elements" required>
                     <button id="usernameButton" class="game-username-form-elements">Start</button>
                 </form>
-                <p id="invalidUsername">Invalid username. Do not use special characters.</p>
+                <p id="invalidUsername">Invalid username. Only numbers, "-" and "_" are allowed.</p>
             </div>
             <div id="gameStartGame">
-                <h2>Rules</h2>
-                <p>Game Explanation</p>
+                <h2>RULES</h2>
+                <div></div>
+                <p>Press the button indicated as quick as you can. Don't fall asleep or you'll end up being the last of the class.<br>Follow the text, not the colors.</p>
                 <button id="startGameButton">Start game</button>
             </div>
             <div id="gameGetReady">
-                <p>Get ready</p>
+                <p id="getReadyCountDown">Get ready<br>in...</p>
+                <p id="threeCountDown">3</p>
+                <p id="twoCountDown">2</p>
+                <p id="oneCountDown">1</p>
             </div>
             <div id="gameStopGame">
                 <p id="pushColor"></p>
