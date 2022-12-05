@@ -75,7 +75,6 @@ function playGame(){
 
 
 
-
 function stopGame()
 {
     if(gameHasStarted){
@@ -92,11 +91,6 @@ function stopGame()
             clearTimeout(timerID);
         }               
     }
-
-
-
-
-
 
 
 /* No tocar abajo */
