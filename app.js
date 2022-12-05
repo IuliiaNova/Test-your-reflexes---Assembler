@@ -11,22 +11,10 @@ let dataObject = new Object();
 let counterValidationUsername = false;
 let usernameCorrect = false;
 
-usernameButton.addEventListener("click", nextPageToRules);
-startGameButton.addEventListener("click", startGame);
-
-function startGame(){
-    windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-180vh)";
-    setTimeout(getReady, 5000); 
-}
-
-function getReady(){
-    windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-270vh)";
-}
-
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
+usernameButton.addEventListener("click", nextPageToRules);
+startGameButton.addEventListener("click", startGame);
 
 function invalidUsernameOut() {
     if (patternUsername.test(chooseUsernameInput.value)||chooseUsernameInput.value=="") {
@@ -52,7 +40,18 @@ function nextPageToRules(){
         dataObject.username = chooseUsernameInput.value;
         localStorage.setItem("username", JSON.stringify(dataObject.username))
         windowGame.style.transitionDuration = "1s";
-        windowGame.style.transform = "translateY(-90vh)";
+        windowGame.style.transform = "translateY(-100vh)";
         event.preventDefault();
-    } 
+    }
+}
+
+function startGame(){
+    windowGame.style.transitionDuration = "1s";
+    windowGame.style.transform = "translateY(-200vh)";
+    setTimeout(getReady, 5000);
+}
+
+function getReady(){
+    windowGame.style.transitionDuration = "1s";
+    windowGame.style.transform = "translateY(-300vh)";
 }

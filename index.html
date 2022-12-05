@@ -7,15 +7,30 @@
     <script></script>
     <link href="style.css" rel="stylesheet" type="text/css" />
     <script src="app.js" defer></script>
-    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <title>Check your reflexes</title>
 </head>
 <body>
+    <video autoplay muted loop id="backgroundVideo">
+        <source src="animations/EMIT_Circle_particles.mp4" type="video/mp4">
+    </video>
     <main>
         <section id="windowGame">
             <div id="gameUsername">
-                <h1>Name of the game</h1>
-                <form id="gameUsernameForm"> <!--Pay your attention for METHOD, important when you get info-->
-                    <label for="username" class="game-username-form-elements">Introduce your username</label>
+                <svg class="banner">
+                    <mask id="mask">
+                        <rect fill="white" width="100%" height="300%"></rect>
+                        <text id="bannerText" dominant-baseline="central" x="50%" y="150%" text-anchor="middle">PRESS IN TIME</text>
+                    </mask>
+                    <rect width="100%" height="100%" id="maskText"></rect>
+                </svg>
+                <div class="container-video-text">
+                    <video class="video-text" autoplay muted loop>
+                        <source src="animations/EMIT_Circle_particles.mp4" type="video/mp4" id="backgroundVideoText">
+                    </video>
+                </div>
+                <form id="gameUsernameForm">
+                    <label id="chooseUsernameLabel" for="username" class="game-username-form-elements">Introduce your username</label>
                     <input type="text" id="chooseUsernameInput" name="username" class="game-username-form-elements" required>
                     <button id="usernameButton" class="game-username-form-elements">Start</button>
                 </form>
@@ -42,7 +57,11 @@
             </div>
         </section>
         <section id="windowScore">
-            <h1>Hall of fame</h1>
+            <div id="hallOfFameTextParent">
+                <div></div>
+                <h1>Hall of fame</h1>
+                <div></div>
+            </div>
             <div class="score-position">
                 <p>Username</p>
                 <p>.time of that username.</p>
