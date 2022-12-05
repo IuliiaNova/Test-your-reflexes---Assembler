@@ -1,6 +1,6 @@
 
 :root{ 
-    --height-window-game-cards: 100%;
+    --height-window-game-cards: ;
     --width-window-game-cards: 100%;
   }
 
@@ -219,29 +219,33 @@ svg{
 @keyframes countDown {
     0% {font-size: 0;}
     100% {transform: translate(-1vw, -18vh); font-size: 15rem;}
-  }
-
+}
 
 #gameStopGame{
     display: none;
-    grid-template-columns: auto auto auto;
-    grid-template-rows: auto auto;
-    gap: 2rem;
-    justify-content: space-around;
+    grid-template-columns: auto;
+    justify-content: center;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
 }
 
-#pushColor{
-    grid-column: 1/4;
-
+#stopGameButtonOne{
+    border-radius: 50%;
+    height: 5rem;
+    width: 5rem;
+    border: none;
+    background-color: #D9BB2B;
+    color: black;
+    font-weight: 700;
+    letter-spacing: 0.25rem;
 }
 
 #gameScore{
     display: none;
-    grid-template-rows: auto auto auto auto;
-    justify-content: space-around;
+    background-color: orange;
+    grid-template-rows: auto auto auto;
+    justify-content: center;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
@@ -278,18 +282,6 @@ svg{
     font-weight: 700;
     padding: 0;
     margin: 0;
-}
-
-#stopGameButtonOne{
-    color: red;
-}
-
-#stopGameButtonTwo{
-    color: blue;
-}
-
-#stopGameButtonThree{
-    color: green;
 }
 
 

@@ -1,26 +1,27 @@
-let windowGame = document.querySelector("#windowGame");
-let usernameButton = document.querySelector("#usernameButton");
-let startGameButton = document.querySelector("#startGameButton");
-let gameStopGame = document.querySelector("#gameStopGame");
-let gameUsername = document.querySelector("#gameUsername");
-let gameStartGame = document.querySelector("#gameStartGame");
-let gameGetReady = document.querySelector("#gameGetReady");
-let getReadyCountDown = document.querySelector("#getReadyCountDown");
-let threeCountDown = document.querySelector("#threeCountDown");
-let twoCountDown = document.querySelector("#twoCountDown");
-let oneCountDown = document.querySelector("#oneCountDown");
-let chooseUsernameInput = document.querySelector("#chooseUsernameInput")
-let invalidUsername = document.querySelector("#invalidUsername")
-let patternUsername = /[ `!@#$%^&*()+=\[\]{};':"\\|,.<>\/?]/;
+const windowGame = document.querySelector("#windowGame");
+const usernameButton = document.querySelector("#usernameButton");
+const startGameButton = document.querySelector("#startGameButton");
+const gameStopGame = document.querySelector("#gameStopGame");
+const gameUsername = document.querySelector("#gameUsername");
+const gameStartGame = document.querySelector("#gameStartGame");
+const gameGetReady = document.querySelector("#gameGetReady");
+const getReadyCountDown = document.querySelector("#getReadyCountDown");
+const threeCountDown = document.querySelector("#threeCountDown");
+const twoCountDown = document.querySelector("#twoCountDown");
+const oneCountDown = document.querySelector("#oneCountDown");
+const chooseUsernameInput = document.querySelector("#chooseUsernameInput")
+const invalidUsername = document.querySelector("#invalidUsername")
+const gameScore = document.querySelector("#gameScore")
+const patternUsername = /[ `!@#$%^&*()+=\[\]{};':"\\|,.<>\/?]/;
 let dataObject = new Object();
 let counterValidationUsername = false;
 let usernameCorrect = false;
-let stopGameButtonOne = document.querySelector("#stopGameButtonOne");
-let stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
-let stopGameButtonThree = document.querySelector("#stopGameButtonThree");
-let playAgainButton = document.querySelector("#playAgainButton");
-let pushColor = document.querySelector("#pushColor");
-let gameResult = document.querySelector("#gameResult");
+const stopGameButtonOne = document.querySelector("#stopGameButtonOne");
+const stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
+const stopGameButtonThree = document.querySelector("#stopGameButtonThree");
+const playAgainButton = document.querySelector("#playAgainButton");
+const pushColor = document.querySelector("#pushColor");
+const gameResult = document.querySelector("#gameResult");
 let startTime=new Date();
 let endTime=new Date();
 let startPressed=false;
@@ -28,19 +29,12 @@ let gameHasStarted=false;
 let maxWait=20;
 let timerID;
 
-
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
-stopGameButtonTwo.addEventListener("click", finishGame);
-stopGameButtonThree.addEventListener("click", finishGame);
 playAgainButton.addEventListener("click", comeBackToFierstPage);
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 usernameButton.addEventListener("click", nextPageToRules);
-
-
-
-
 
 function playGame(){
     //Set randon time - set color 
@@ -86,7 +80,9 @@ function remark(responseTime)
 
 function finishGame(){
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-360vh)";
+    windowGame.style.transform = "translateY(-450vh)";
+    windowGame.style.gridTemplateRows= "100% 100% 100% 100% 100%";
+    gameScore.style.display = "grid";
     stopGame();
 }
 
