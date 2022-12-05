@@ -9,9 +9,6 @@ let getReadyCountDown = document.querySelector("#getReadyCountDown");
 let threeCountDown = document.querySelector("#threeCountDown");
 let twoCountDown = document.querySelector("#twoCountDown");
 let oneCountDown = document.querySelector("#oneCountDown");
-
-
-
 let chooseUsernameInput = document.querySelector("#chooseUsernameInput")
 let invalidUsername = document.querySelector("#invalidUsername")
 let patternUsername = /[ `!@#$%^&*()+=\[\]{};':"\\|,.<>\/?]/;
@@ -22,7 +19,6 @@ let stopGameButtonOne = document.querySelector("#stopGameButtonOne");
 let stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
 let stopGameButtonThree = document.querySelector("#stopGameButtonThree");
 let playAgainButton = document.querySelector("#playAgainButton");
-let gameStopGame = document.querySelector("#gameStopGame"); 
 let pushColor = document.querySelector("#pushColor");
 let gameResult = document.querySelector("#gameResult");
 let startTime=new Date();
@@ -39,31 +35,14 @@ stopGameButtonOne.addEventListener("click", finishGame);
 stopGameButtonTwo.addEventListener("click", finishGame);
 stopGameButtonThree.addEventListener("click", finishGame);
 playAgainButton.addEventListener("click", comeBackToFierstPage);
+chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
+chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
+usernameButton.addEventListener("click", nextPageToRules);
+startGameButton.addEventListener("click", startGame);
 
-function nextPageToRules(){
-    if (usernameCorrect = true) {
-        dataObject.username = chooseUsernameInput.value;
-        localStorage.setItem("username", JSON.stringify(dataObject.username));
-        windowGame.style.transitionDuration = "1s";
-        windowGame.style.transform = "translateY(-90vh)";
-    }
-}
 
-function startGame(){
-    windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-180vh)";
-    setTimeout(getReady, 5000); 
-    gameHasStarted=true;
-    playGame();
-}
 
-function getReady(){
-    windowGame.style.transitionDuration = "1s"; 
-    windowGame.style.transform = "translateY(-270vh)";
-    
-}
 
-//añade elemento pero por abajo. convertir color a [] 
 
 function playGame(){
     //Set randon time - set color 
@@ -123,10 +102,6 @@ function comeBackToFierstPage(){
 
 /* HALL OF FAME */
 
-chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
-chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
-usernameButton.addEventListener("click", nextPageToRules);
-startGameButton.addEventListener("click", startGame);
 
 function invalidUsernameOut() {
     if (patternUsername.test(chooseUsernameInput.value)||chooseUsernameInput.value=="") {
