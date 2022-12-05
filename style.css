@@ -1,3 +1,4 @@
+
 :root{ 
     --height-window-game-cards: 100%;
     --width-window-game-cards: 100%;
@@ -142,11 +143,17 @@ svg{
 #gameStopGame{
     display: none;
     grid-template-columns: auto auto auto;
+    grid-template-rows: auto auto;
     gap: 2rem;
     justify-content: space-around;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards); 
+}
+
+#pushColor{
+    grid-column: 1/4;
+
 }
 
 #gameScore{
@@ -190,6 +197,19 @@ svg{
     padding: 0;
     margin: 0;
 }
+
+#stopGameButtonOne{
+    color: red;
+}
+
+#stopGameButtonTwo{
+    color: blue;
+}
+
+#stopGameButtonThree{
+    color: green;
+}
+
 
 #hallOfFameTextParent{
     display: grid;
