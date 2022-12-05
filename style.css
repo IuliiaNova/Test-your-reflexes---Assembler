@@ -7,6 +7,10 @@
     font-family: 'Play', sans-serif;
 }
 
+textarea:focus, input:focus{
+    outline: none;
+}
+
 html{
     width: 100vw;
     height: 100vh;
@@ -38,7 +42,7 @@ main{
 
 #windowGame{
     display: grid;
-    grid-template-rows: auto;
+    grid-template-rows: 100%;
     background-color: black;
     border-radius: 25px;
     width: 100%;
@@ -124,11 +128,31 @@ svg{
 
 #gameStartGame{
     display: none;
-    grid-template-rows: 10% 10% 5%;
+    grid-template-rows: 25% auto auto;
+    grid-template-columns: 30vw;
     justify-content: center;
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
+}
+
+#gameStartGame h2{
+    font-size: 5rem;
+    letter-spacing: 2rem;
+}
+
+#gameStartGame p{
+    
+}
+
+#startGameButton{
+    height: 2rem;
+    border-radius: 10px;
+    border: none;
+    color: #0D2673;
+    background-color: #D9BB2B;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
 }
 
 #gameGetReady{

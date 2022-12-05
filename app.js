@@ -19,7 +19,7 @@ startGameButton.addEventListener("click", startGame);
 function invalidUsernameOut() {
     if (patternUsername.test(chooseUsernameInput.value)||chooseUsernameInput.value=="") {
         invalidUsername.classList.add("invalidUsernameAppear");
-        chooseUsernameInput.style.border = "2px dashed red";
+        chooseUsernameInput.style.border = "1px solid red";
         counterValidationUsername = true;
     }
     else {
@@ -31,17 +31,20 @@ function invalidUsernameOut() {
 function invalidUsernameIn() {
     if (counterValidationUsername == true) {
         chooseUsernameInput.style.border = "none";
+        invalidUsername.classList.remove("invalidUsernameAppear");
         counterValidationUsername = false;
     }
 }
 
 function nextPageToRules(){
+    event.preventDefault();
     if (usernameCorrect == true) {
         dataObject.username = chooseUsernameInput.value;
         localStorage.setItem("username", JSON.stringify(dataObject.username))
         windowGame.style.transitionDuration = "1s";
         windowGame.style.transform = "translateY(-100vh)";
-        event.preventDefault();
+        windowGame.style.gridTemplateRows= "100% 100%";
+        gameStartGame.style.display = "grid";
     }
 }
 
