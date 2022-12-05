@@ -47,22 +47,22 @@ function playGame(){
     startTime = new Date();
 }
 
-function stopGame()
-{
+function stopGame(){
     if(gameHasStarted){
+        console.log("Hola")
         endTime=new Date();
-        let responseTime=(endTime.getTime()-startTime.getTime()-5000)/1000;    
+        let responseTime=(endTime.getTime()-startTime.getTime()-5000)/1000;
         gameHasStarted=false;
         let yourResult = document.createElement("p");
-        yourResult.innerText = ("Your response time is: " + responseTime + 
+        yourResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
         gameResult.appendChild(yourResult);
         pushColor.removeChild(colorTextOut); //no funciona
     }
-        else{
-            clearTimeout(timerID);
-        }
+    else{
+        clearTimeout(timerID);
     }
+}
 
 /* No tocar abajo */
 
@@ -139,6 +139,8 @@ function startGame(){
     setTimeout(showOneCountDown, 4000);
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
+    gameHasStarted=true;
+    playGame();
 }
 
 function hideGetReady(){
