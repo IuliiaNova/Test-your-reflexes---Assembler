@@ -29,7 +29,6 @@ let maxWait=20;
 let timerID;
 
 
-startGameButton.addEventListener("click", nextPageToRules);
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
 stopGameButtonTwo.addEventListener("click", finishGame);
@@ -38,7 +37,6 @@ playAgainButton.addEventListener("click", comeBackToFierstPage);
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 usernameButton.addEventListener("click", nextPageToRules);
-startGameButton.addEventListener("click", startGame);
 
 
 
