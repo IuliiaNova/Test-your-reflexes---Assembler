@@ -40,17 +40,14 @@ stopGameButtonTwo.addEventListener("click", finishGame);
 stopGameButtonThree.addEventListener("click", finishGame);
 playAgainButton.addEventListener("click", comeBackToFierstPage);
 
-
-
 function nextPageToRules(){
     if (usernameCorrect = true) {
         dataObject.username = chooseUsernameInput.value;
         localStorage.setItem("username", JSON.stringify(dataObject.username));
         windowGame.style.transitionDuration = "1s";
         windowGame.style.transform = "translateY(-90vh)";
-    } 
+    }
 }
-
 
 function startGame(){
     windowGame.style.transitionDuration = "1s";
@@ -66,8 +63,6 @@ function getReady(){
     
 }
 
-
-
 //añade elemento pero por abajo. convertir color a [] 
 
 function playGame(){
@@ -79,10 +74,7 @@ function playGame(){
     pushColor.appendChild(colorTextOut);
     colorTextOut.innerHTML = `${color}`;
     startTime = new Date();
-} 
-
-
-
+}
 
 function stopGame()
 {
@@ -96,16 +88,10 @@ function stopGame()
         gameResult.appendChild(yourResult);
         pushColor.removeChild(colorTextOut); //no funciona
     }
-        else{       
+        else{
             clearTimeout(timerID);
-        }               
+        }
     }
-
-
-
-
-
-
 
 /* No tocar abajo */
 
@@ -118,7 +104,6 @@ function remark(responseTime)
         responseString="Keep practicing!";
     if (responseTime >=1.20)
         responseString="Did you fall asleep?";
-  
     return responseString;
 }
 
