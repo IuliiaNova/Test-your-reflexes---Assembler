@@ -13,7 +13,7 @@ let usernameCorrect = false;
 
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
-usernameButton.addEventListener("click", nextPageToRules);
+usernameButton.addEventListener("click", initGame);
 startGameButton.addEventListener("click", startGame);
 
 function invalidUsernameOut() {
@@ -35,13 +35,30 @@ function invalidUsernameIn() {
     }
 }
 
-function nextPageToRules(){
-    if (usernameCorrect == true) {
-        dataObject.username = chooseUsernameInput.value;
-        localStorage.setItem("username", JSON.stringify(dataObject.username))
-        windowGame.style.transitionDuration = "1s";
-        windowGame.style.transform = "translateY(-100vh)";
-        event.preventDefault();
+function initGame(){
+    event.preventDefault();
+        if (usernameCorrect == true) {
+            dataObject.username = chooseUsernameInput.value;
+            windowGame.style.transitionDuration = "1s";
+            windowGame.style.transform = "translateY(-100vh)";
+            dataHandler()
+        }
+}
+
+function dataHandler(){
+    event.preventDefault();
+    let ranking = JSON.parse(localStorage.getItem('puntuation'))
+
+    if (ranking !== null){
+        let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
+        if(positionExist)  {
+            positionExist.puntuation =Math.random(10) //cambiar Math.random(10) por puntuacion
+        }else{
+            ranking.push({username: chooseUsernameInput.value , puntuation : Math.random(10)})     
+        }
+        localStorage.setItem("puntuation", JSON.stringify(ranking))  
+    }else{
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : Math.random(10)}]))
     }
 }
 
@@ -55,3 +72,4 @@ function getReady(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.transform = "translateY(-300vh)";
 }
+
