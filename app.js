@@ -52,7 +52,7 @@ function dataHandler(){
     if (ranking !== null){
         let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
         if(positionExist)  {
-            positionExist.puntuation =Math.random(10) //cambiar Math.random(10) por puntuacion
+            positionExist.puntuation =Math.random(10) //cambiar Math.random(10) por variable con la puntuacion
         }else{
             ranking.push({username: chooseUsernameInput.value , puntuation : Math.random(10)})     
         }
