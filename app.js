@@ -22,12 +22,21 @@ const stopGameButtonThree = document.querySelector("#stopGameButtonThree");
 const playAgainButton = document.querySelector("#playAgainButton");
 const pushColor = document.querySelector("#pushColor");
 const gameResult = document.querySelector("#gameResult");
+const resultOne = document.querySelector("#resultOne");
+const userNameOne = document.querySelector("#userNameOne");
 let startTime=new Date();
 let endTime=new Date();
 let startPressed=false;
 let gameHasStarted=false;
 let maxWait=20;
 let timerID;
+
+
+let userObject = {
+    /* userName: ;
+    userScore: ;  */
+}
+
 
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
@@ -37,29 +46,18 @@ chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 usernameButton.addEventListener("click", nextPageToRules);
 
 function playGame(){
-    //Set randon time - set color 
-    // If for buttons color&&next
-
-    /* let color = ["RED", "BLUE", "GREEN"]; //It should be random of three colors
-    let colorTextOut = document.createElement("p");
-    pushColor.appendChild(colorTextOut);
-    colorTextOut.innerHTML = `${color}`; */
     startTime = new Date();
 }
 
 function stopGame(){
     if(gameHasStarted){
         endTime=new Date();
-        let responseTime=(endTime.getTime()-startTime.getTime()-5000)/1000;
+        let responseTime=(endTime.getTime()-startTime.getTime()-3000)/1000;
         gameHasStarted=false;
-        let yourResult = document.createElement("p");
-       /*  yourResult.setAttribute(id, paragraphYourResult);
-         */
-        yourResult.innerText = ("Your response time is: " + responseTime +
+        gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
-        /* yourResult.style.color = "WHITE"; */
-        gameResult.appendChild(yourResult);
-        pushColor.removeChild(colorTextOut); //no funciona
+        resultOne.innerText = responseTime; 
+        localStorage.setItem("score", JSON.stringify(responseTime))
     }
     else{
         clearTimeout(timerID);
@@ -127,6 +125,10 @@ function nextPageToRules(){
         windowGame.style.transform = "translateY(-100vh)";
         windowGame.style.gridTemplateRows= "100% 100%";
         gameStartGame.style.display = "grid";
+        const user1 = localStorage.getItem("username");
+        userNameOne.innerText = user1; //RANKING NAME 
+        resultOne.innerText = "Game in progress..."
+
     } else {
         invalidUsername.classList.add("invalidUsernameAppear");
         chooseUsernameInput.style.border = "1px solid red";
@@ -143,12 +145,13 @@ function startGame(){
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
     gameHasStarted=true;
-    playGame();
+    
 }
 
 function hideGetReady(){
     getReadyCountDown.style.display = "none";
     threeCountDown.style.display = "grid";
+    playGame();
 }
 
 function showTwoCountDown(){
