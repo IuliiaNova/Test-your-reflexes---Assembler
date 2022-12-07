@@ -102,7 +102,7 @@ main{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
-    background-color: rgba(4, 157, 191, 1);
+    background-color: rgba(4, 157, 191, 0.8);
     color: #0D2673;
 }
 
@@ -239,12 +239,12 @@ main{
 }
 
 #stopGameButtonOne{
+    color: #0D2673;
     border-radius: 50%;
     height: 300%;
     width: 90%;
     border: none;
     background-color: #D9BB2B;
-    color: black;
     font-weight: 700;
     letter-spacing: 0.25rem;
 }
@@ -260,7 +260,7 @@ main{
     overflow: hidden;
     border-radius: 25px;
     background-color: orange;
-    height: 67%;
+    height: 68%;
 }
 
 .container-video-text-two{
@@ -306,7 +306,7 @@ main{
     justify-content: center;
     align-content: flex-start;
     width: 100%;
-    height: 50%;
+    height: 30%;
     margin-top: 4rem;
     z-index: 1;
 }
@@ -314,12 +314,12 @@ main{
 #gameResult{
     z-index: 2;
     font-weight: 700;
-    margin: 1.5rem 0 0 0;
+    margin: 1rem 0 0 0;
     padding: 0 1rem;
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
-    background-color: rgba(4, 157, 191, 1);
+    background-color: rgba(4, 157, 191, 0.8);
     color: #0D2673;
     text-align: center;
 }

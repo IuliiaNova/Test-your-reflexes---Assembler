@@ -83,9 +83,9 @@ function remark(responseTime)
 function finishGame(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
-    windowScore.style.height = "67%";
+    windowScore.style.height = "67.5%";
     gameScore.style.display = "flex";
-    windowGame.style.transform = "translateY(-563vh)";
+    windowGame.style.transform = "translateY(-559vh)";
     stopGame();
 }
 
