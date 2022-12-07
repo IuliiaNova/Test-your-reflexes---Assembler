@@ -31,12 +31,16 @@ let gameHasStarted=false;
 let maxWait=20;
 let timerID;
 let responseTime=null;
-let ranking = JSON.parse(localStorage.getItem('puntuation'))
-let arrayRanking = []
+let ranking = JSON.parse(localStorage.getItem('puntuation'));
+let arrayRanking = [];
 let userObject = {
     /* userName: ;
     userScore: ;  */
 }
+
+
+const historialUsername = document.querySelector("#historialUsername"); 
+const historialScore = document.querySelector("#historialScore"); 
 
 
 startGameButton.addEventListener("click", startGame);
@@ -53,8 +57,14 @@ if (ranking !== null) {
             arrayRanking.push(Object.values(ranking[i])) 
         }
         const sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1])
-        console.log(sortedArrayRanking)
-}
+        console.log(sortedArrayRanking);
+        if (arrayRanking.length < 10){
+        historialUsername.innerText = arrayRanking; 
+         }
+       /*  historialUsername.innerText = localStorage.getItem("username");
+        historialScore.innerText = localStorage.getItem("score"); */
+    }
+
 function playGame(){
     startTime = new Date();
 }
@@ -68,6 +78,9 @@ function stopGame(){
         " seconds " + "\n" + remark(responseTime));
         setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
         /* localStorage.setItem("score", JSON.stringify(responseTime)); */ //deprecated since Edgar worked on the upload of the data
+        /* historialUsername.innerText = localStorage.getItem("username");
+        historialScore.innerText = responseTime; */
+        
     }
     else{
         clearTimeout(timerID);
@@ -209,4 +222,3 @@ function getReady(){
     windowGame.style.gridTemplateRows= "100% 100% 100% 100%";
     gameStopGame.style.display = "grid";
 }
-
