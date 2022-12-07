@@ -40,7 +40,7 @@ let userObject = {
 
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
-playAgainButton.addEventListener("click", comeBackToFierstPage);
+playAgainButton.addEventListener("click", comeBackToFirstPage);
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 usernameButton.addEventListener("click", initGame);
@@ -59,7 +59,7 @@ function stopGame(){
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
         setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
-        localStorage.setItem("score", JSON.stringify(responseTime));
+        /* localStorage.setItem("score", JSON.stringify(responseTime)); */ //deprecated since Edgar worked on the upload of the data
     }
     else{
         clearTimeout(timerID);
@@ -95,7 +95,7 @@ function finishGame(){
 }
 
 
-function comeBackToFierstPage(){
+function comeBackToFirstPage(){
     windowGame.style.transitionDuration = "1s";
     gameResult.removeChild; //Mirar como eliminar este elemento
     location.reload(); 
