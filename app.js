@@ -142,7 +142,10 @@ function dataHandler(){
         }
         localStorage.setItem("puntuation", JSON.stringify(ranking))  
     }else{
-        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : Math.random(10)}]))
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : Math.random(10)
+        }]))
+    }}
+
 function nextPageToRules(){
     event.preventDefault();
     if (usernameCorrect == true) {
