@@ -1,6 +1,6 @@
 
 :root{ 
-    --height-window-game-cards: ;
+    --height-window-game-cards: 100%;
     --width-window-game-cards: 100%;
   }
 
@@ -14,7 +14,7 @@ textarea:focus, input:focus{
 
 html{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: turquoise;
     display: grid;
     grid-template-rows: auto;
@@ -47,6 +47,7 @@ main{
     background-color: black;
     border-radius: 25px;
     width: 100%;
+    height: 100%;
 }
 
 #gameUsername{
@@ -68,7 +69,8 @@ main{
     width: 100%;
     height: 100%;
 }
-svg{
+
+#banner{
     top: 0;
     left: 0;
     width: 100%;
@@ -118,17 +120,19 @@ svg{
 }
 
 #invalidUsername{
-    color: crimson;
     display: none;
     z-index: 1;
+    font-weight: 700;
 }
 
 #invalidUsername.invalidUsernameAppear{
-    color: crimson;
+    color: rgb(217, 158, 170);
     display: block;
 }
 
+/* RULES */
 #gameStartGame{
+    margin-top: 5vh;
     display: none;
     grid-template-rows: 15% 10% 30% auto;
     grid-template-columns: 40vw;
@@ -136,6 +140,7 @@ svg{
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
+    border-radius: 25px;
 }
 
 #gameStartGame h2{
@@ -170,6 +175,7 @@ svg{
     font-weight: 700;
 }
 
+/* GET READY */
 #gameGetReady{
     display: none;
     grid-template-columns: auto;
@@ -178,8 +184,7 @@ svg{
     align-content: center;
     height: var(--height-window-game-cards);
     width: var(--width-window-game-cards);
-    padding: 0;
-    margin: 0;
+    border-radius: 25px;
 }
 
 #gameGetReady p{
@@ -221,19 +226,22 @@ svg{
     100% {transform: translate(-1vw, -18vh); font-size: 15rem;}
 }
 
+/* PRESS BUTTON */
 #gameStopGame{
     display: none;
-    grid-template-columns: auto;
+    grid-template-rows: auto;
     justify-content: center;
     align-content: center;
-    height: var(--height-window-game-cards);
+    margin-top: 0.5%;
+    height: 100%;
     width: var(--width-window-game-cards);
+    border-radius: 25px;
 }
 
 #stopGameButtonOne{
     border-radius: 50%;
-    height: 5rem;
-    width: 5rem;
+    height: 300%;
+    width: 90%;
     border: none;
     background-color: #D9BB2B;
     color: black;
@@ -241,20 +249,99 @@ svg{
     letter-spacing: 0.25rem;
 }
 
+/* GAME SCORE */
 #gameScore{
-    display: none;
-    background-color: orange;
-    grid-template-rows: auto auto auto;
-    justify-content: center;
-    align-content: center;
-    height: var(--height-window-game-cards);
+    position: relative;
     width: var(--width-window-game-cards);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    overflow: hidden;
+    border-radius: 25px;
+    background-color: orange;
+    height: 67%;
 }
 
+.container-video-text-two{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#bannerTwo{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 75%;
+    z-index: 1;
+}
+
+#bannerTextTwo{
+    font-size: 5rem;
+    letter-spacing: 0.6rem;
+}
+
+#maskTextTwo{
+    mask:url("#maskTwo");
+}
+
+/* #gameScore h2{ 
+    font-size: 6rem;
+    font-weight: 700;
+    letter-spacing: 2rem;
+    color: #0D2673;
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+    line-height: 5rem;
+} */
+
+#gameScoreFillBlack{
+    display: grid;
+    grid-template-rows: auto auto;
+    grid-template-columns: auto;
+    justify-content: center;
+    align-content: flex-start;
+    width: 100%;
+    height: 50%;
+    margin-top: 4rem;
+    z-index: 1;
+}
+
+#gameResult{
+    z-index: 2;
+    font-weight: 700;
+    margin: 1.5rem 0 0 0;
+    padding: 0 1rem;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border: none;
+    background-color: rgba(4, 157, 191, 1);
+    color: #0D2673;
+    text-align: center;
+}
+
+#playAgainButton{
+    z-index: 2;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border: none;
+    color: #0D2673;
+    background-color: #D9BB2B;
+    letter-spacing: 0.3rem;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 0.5rem 1rem;
+}
+
+/* HALL OF FAME */
 #windowScore{
     display: grid;
     height: 99.5%;
-    grid-template-rows: 10% auto auto auto auto auto auto auto auto auto 10%;
+    grid-template-rows: 10% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 10%;
     grid-template-columns: 100%;
     background-color: rgba(4, 157, 191, 0.5);
     border: 2px solid #049DBF;

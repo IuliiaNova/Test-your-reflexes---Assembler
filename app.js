@@ -40,22 +40,24 @@ function playGame(){
     //Set randon time - set color 
     // If for buttons color&&next
 
-    let color = ["RED", "BLUE", "GREEN"]; //It should be random of three colors
+    /* let color = ["RED", "BLUE", "GREEN"]; //It should be random of three colors
     let colorTextOut = document.createElement("p");
     pushColor.appendChild(colorTextOut);
-    colorTextOut.innerHTML = `${color}`;
+    colorTextOut.innerHTML = `${color}`; */
     startTime = new Date();
 }
 
 function stopGame(){
     if(gameHasStarted){
-        console.log("Hola")
         endTime=new Date();
         let responseTime=(endTime.getTime()-startTime.getTime()-5000)/1000;
         gameHasStarted=false;
         let yourResult = document.createElement("p");
+       /*  yourResult.setAttribute(id, paragraphYourResult);
+         */
         yourResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
+        /* yourResult.style.color = "WHITE"; */
         gameResult.appendChild(yourResult);
         pushColor.removeChild(colorTextOut); //no funciona
     }
@@ -72,7 +74,7 @@ function remark(responseTime)
     if (responseTime < 0.70)
         responseString="Well done!";
     if (responseTime >=0.70 && responseTime < 1.20)
-        responseString="Keep practicing!";
+        responseString="Keep practising!";
     if (responseTime >=1.20)
         responseString="Did you fall asleep?";
     return responseString;
@@ -80,17 +82,18 @@ function remark(responseTime)
 
 function finishGame(){
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-450vh)";
-    windowGame.style.gridTemplateRows= "100% 100% 100% 100% 100%";
-    gameScore.style.display = "grid";
+    windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
+    windowScore.style.height = "67%";
+    gameScore.style.display = "flex";
+    windowGame.style.transform = "translateY(-563vh)";
     stopGame();
 }
 
 
 function comeBackToFierstPage(){
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(0)";
     gameResult.removeChild; //Mirar como eliminar este elemento
+    location. reload()
 }
 
 
@@ -132,11 +135,11 @@ function nextPageToRules(){
 
 function startGame(){
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-200vh)";
-    setTimeout(getReady, 5000);
+    windowGame.style.transform = "translateY(-190vh)";
     setTimeout(hideGetReady, 2000);
     setTimeout(showTwoCountDown, 3000);
     setTimeout(showOneCountDown, 4000);
+    setTimeout(getReady, 5000);
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
     gameHasStarted=true;
@@ -161,7 +164,7 @@ function showOneCountDown(){
 function getReady(){
     oneCountDown.style.display = "none";
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-300vh)";
+    windowGame.style.transform = "translateY(-286vh)";
     windowGame.style.gridTemplateRows= "100% 100% 100% 100%";
     gameStopGame.style.display = "grid";
 }
