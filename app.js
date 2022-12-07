@@ -59,7 +59,7 @@ const userNameTen = document.querySelector("#userNameTen");
 const resultTen = document.querySelector("#resultTen");
 const usernameInProgress = document.querySelector("#usernameInProgress");
 const resultInProgress = document.querySelector("#resultInProgress");
-let sortedArrayRanking = []; 
+let sortedArrayRanking = [];
 
 
 startGameButton.addEventListener("click", startGame);
@@ -71,42 +71,44 @@ usernameButton.addEventListener("click", initGame);
 startGameButton.addEventListener("click", startGame);
 usernameButton.addEventListener("click", nextPageToRules);
 
+usernameInProgress.innerText = "Waiting";
+resultInProgress.innerText = "for an username...";
+
 if (ranking !== null) {
-    sortArray(); 
+    sortArray();
     printHallOfFame();
 }
 
-    function sortArray(){
-        arrayRanking = [];
-for (let i = 0; i < ranking.length; i++) {
-            arrayRanking.push(Object.values(ranking[i])) 
-        }
-sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1]);
+function sortArray(){
+    arrayRanking = [];
+    for (let i = 0; i < ranking.length; i++) {
+        arrayRanking.push(Object.values(ranking[i]))
     }
+    sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1]);
+}
 
-    function printHallOfFame() {
-        userNameOne.innerText = sortedArrayRanking[0][0];
-        resultOne.innerText = sortedArrayRanking[0][1] + " " + "sec";
-        userNameTwo.innerText = sortedArrayRanking[1][0];
-        resultTwo.innerText = sortedArrayRanking[1][1] + " " + "sec";
-        userNameThree.innerText = sortedArrayRanking[2][0];
-        resultThree.innerText = sortedArrayRanking[2][1] + " " + "sec";
-        userNameFour.innerText = sortedArrayRanking[3][0];
-        resultFour.innerText = sortedArrayRanking[3][1] + " " + "sec";
-        userNameFive.innerText = sortedArrayRanking[4][0];
-        resultFive.innerText = sortedArrayRanking[4][1] + " " + "sec";
-        userNameSix.innerText = sortedArrayRanking[5][0];
-        resultSix.innerText = sortedArrayRanking[5][1] + " " + "sec";
-        userNameSeven.innerText = sortedArrayRanking[6][0];
-        resultSeven.innerText = sortedArrayRanking[6][1] + " " + "sec";
-        userNameEigth.innerText = sortedArrayRanking[7][0];
-        resultEigth.innerText = sortedArrayRanking[7][1] + " " + "sec";
-        userNameNine.innerText = sortedArrayRanking[8][0];
-        resultNine.innerText = sortedArrayRanking[8][1] + " " + "sec";
-        userNameTen.innerText = sortedArrayRanking[9][0];
-        resultTen.innerText = sortedArrayRanking[9][1] + " " + "sec";
-       }
-    
+function printHallOfFame() {
+    userNameOne.innerText = sortedArrayRanking[0][0];
+    resultOne.innerText = sortedArrayRanking[0][1] + " " + "sec";
+    userNameTwo.innerText = sortedArrayRanking[1][0];
+    resultTwo.innerText = sortedArrayRanking[1][1] + " " + "sec";
+    userNameThree.innerText = sortedArrayRanking[2][0];
+    resultThree.innerText = sortedArrayRanking[2][1] + " " + "sec";
+    userNameFour.innerText = sortedArrayRanking[3][0];
+    resultFour.innerText = sortedArrayRanking[3][1] + " " + "sec";
+    userNameFive.innerText = sortedArrayRanking[4][0];
+    resultFive.innerText = sortedArrayRanking[4][1] + " " + "sec";
+    userNameSix.innerText = sortedArrayRanking[5][0];
+    resultSix.innerText = sortedArrayRanking[5][1] + " " + "sec";
+    userNameSeven.innerText = sortedArrayRanking[6][0];
+    resultSeven.innerText = sortedArrayRanking[6][1] + " " + "sec";
+    userNameEigth.innerText = sortedArrayRanking[7][0];
+    resultEigth.innerText = sortedArrayRanking[7][1] + " " + "sec";
+    userNameNine.innerText = sortedArrayRanking[8][0];
+    resultNine.innerText = sortedArrayRanking[8][1] + " " + "sec";
+    userNameTen.innerText = sortedArrayRanking[9][0];
+    resultTen.innerText = sortedArrayRanking[9][1] + " " + "sec";
+}
 
 function playGame(){
     startTime = new Date();
@@ -119,7 +121,6 @@ function stopGame(){
         gameHasStarted=false;
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
-        setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
     }
     else{
         clearTimeout(timerID);
@@ -127,10 +128,24 @@ function stopGame(){
 }
 
 function showTimeResultInHallOfFame(responseTime){
-    resultInProgress.innerText = responseTime;
+    const user1 = localStorage.getItem("username");
+    let arraysortedArrayRanking = Object.values(sortedArrayRanking);
+    for (let i = 0; i < 10; i++){
+        if(responseTime === arraysortedArrayRanking[i][1]){
+            usernameInProgress.innerText = "Congrats " + user1 + ". Your time of " + responseTime;
+            resultInProgress.innerText = " made it to the top ten!";
+            i=10;
+        }
+        else if (i==9){
+            console.log("Inside else i =9")
+            usernameInProgress.innerText = "Sorry " + user1 + ". Your time of " + responseTime;
+            resultInProgress.innerText = "did not make it to the top ten";
+        }
+    }
+    console.log("llegue")
+    usernameInProgress.style.fontSize ="0.8rem";
+    resultInProgress.style.fontSize ="0.8rem";
 }
-
-
 
 function remark(responseTime){
     var responseString="";
@@ -151,8 +166,9 @@ function finishGame(){
     windowGame.style.transform = "translateY(-559vh)";
     stopGame();
     dataHandler();
-    sortArray(); 
-    printHallOfFame();
+    sortArray();
+    setTimeout(printHallOfFame, 1000);
+    setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
 }
 
 
