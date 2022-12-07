@@ -56,14 +56,17 @@ function stopGame(){
         gameHasStarted=false;
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
-        resultOne.innerText = responseTime;
-        localStorage.setItem("score", JSON.stringify(responseTime))
+        setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
+        localStorage.setItem("score", JSON.stringify(responseTime));
     }
     else{
         clearTimeout(timerID);
     }
 }
 
+function showTimeResultInHallOfFame(responseTime){
+    resultOne.innerText = responseTime;
+}
 
 /* No tocar abajo */
 
