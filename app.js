@@ -31,7 +31,8 @@ let gameHasStarted=false;
 let maxWait=20;
 let timerID;
 let responseTime=null;
-
+let ranking = JSON.parse(localStorage.getItem('puntuation'))
+let arrayRanking = []
 let userObject = {
     /* userName: ;
     userScore: ;  */
@@ -47,6 +48,13 @@ usernameButton.addEventListener("click", initGame);
 startGameButton.addEventListener("click", startGame);
 usernameButton.addEventListener("click", nextPageToRules);
 
+if (ranking !== null) {
+    for (let i = 0; i < ranking.length; i++) {
+            arrayRanking.push(Object.values(ranking[i])) 
+        }
+        const sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1])
+        console.log(sortedArrayRanking)
+}
 function playGame(){
     startTime = new Date();
 }
@@ -90,8 +98,8 @@ function finishGame(){
     windowScore.style.height = "67.5%";
     gameScore.style.display = "flex";
     windowGame.style.transform = "translateY(-559vh)";
-    dataHandler()
     stopGame();
+    dataHandler()
 }
 
 
@@ -134,12 +142,10 @@ function initGame(){
 
 function dataHandler(){
     event.preventDefault();
-    let ranking = JSON.parse(localStorage.getItem('puntuation'))
-
     if (ranking !== null){
         let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
         if(positionExist)  {
-            positionExist.puntuation =responseTime //cambiar Math.random(10) por variable con la puntuacion
+            positionExist.puntuation =responseTime
         }else{
             ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})     
         }
