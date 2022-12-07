@@ -43,6 +43,8 @@ stopGameButtonOne.addEventListener("click", finishGame);
 playAgainButton.addEventListener("click", comeBackToFierstPage);
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
+usernameButton.addEventListener("click", initGame);
+startGameButton.addEventListener("click", startGame);
 usernameButton.addEventListener("click", nextPageToRules);
 
 function playGame(){
@@ -120,6 +122,33 @@ function invalidUsernameIn() {
     counterValidationUsername = false;
 }
 
+function initGame(){
+    event.preventDefault();
+        if (usernameCorrect == true) {
+            dataObject.username = chooseUsernameInput.value;
+            windowGame.style.transitionDuration = "1s";
+            windowGame.style.transform = "translateY(-100vh)";
+            dataHandler()
+        }
+}
+
+function dataHandler(){
+    event.preventDefault();
+    let ranking = JSON.parse(localStorage.getItem('puntuation'))
+
+    if (ranking !== null){
+        let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
+        if(positionExist)  {
+            positionExist.puntuation =Math.random(10) //cambiar Math.random(10) por variable con la puntuacion
+        }else{
+            ranking.push({username: chooseUsernameInput.value , puntuation : Math.random(10)})     
+        }
+        localStorage.setItem("puntuation", JSON.stringify(ranking))  
+    }else{
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : Math.random(10)
+        }]))
+    }}
+
 function nextPageToRules(){
     event.preventDefault();
     if (usernameCorrect == true) {
@@ -174,3 +203,4 @@ function getReady(){
     windowGame.style.gridTemplateRows= "100% 100% 100% 100%";
     gameStopGame.style.display = "grid";
 }
+
