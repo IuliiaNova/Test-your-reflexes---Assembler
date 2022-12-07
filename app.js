@@ -58,7 +58,6 @@ if (ranking !== null) {
         }
         const sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1])
         console.log(sortedArrayRanking);
-        arrayRanking.length = 10; 
         if (arrayRanking.length < 10){
         historialUsername.innerText = arrayRanking; 
          }
