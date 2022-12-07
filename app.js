@@ -39,8 +39,27 @@ let userObject = {
 }
 
 
-const historialUsername = document.querySelector("#historialUsername"); 
-const historialScore = document.querySelector("#historialScore"); 
+const userNameTwo = document.querySelector("#userNameTwo");
+const resultTwo = document.querySelector("#resultTwo");
+const userNameThree = document.querySelector("#userNameThree");
+const resultThree = document.querySelector("#resultThree");
+const userNameFour = document.querySelector("#userNameFour");
+const resultFour = document.querySelector("#resultFour");
+const userNameFive = document.querySelector("#userNameFive");
+const resultFive = document.querySelector("#resultFive");
+const userNameSix = document.querySelector("#userNameSix");
+const resultSix = document.querySelector("#resultSix");
+const userNameSeven = document.querySelector("#userNameSeven");
+const resultSeven = document.querySelector("#resultSeven");
+const userNameEigth = document.querySelector("#userNameEigth");
+const resultEigth = document.querySelector("#resultEigth");
+const userNameNine = document.querySelector("#userNameNine");
+const resultNine = document.querySelector("#resultNine");
+const userNameTen = document.querySelector("#userNameTen");
+const resultTen = document.querySelector("#resultTen");
+const usernameInProgress = document.querySelector("#usernameInProgress");
+const resultInProgress = document.querySelector("#resultInProgress");
+let sortedArrayRanking = []; 
 
 
 startGameButton.addEventListener("click", startGame);
@@ -53,17 +72,41 @@ startGameButton.addEventListener("click", startGame);
 usernameButton.addEventListener("click", nextPageToRules);
 
 if (ranking !== null) {
-    for (let i = 0; i < ranking.length; i++) {
+    sortArray(); 
+    printHallOfFame();
+}
+
+    function sortArray(){
+        arrayRanking = [];
+for (let i = 0; i < ranking.length; i++) {
             arrayRanking.push(Object.values(ranking[i])) 
         }
-        const sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1])
-        console.log(sortedArrayRanking);
-        if (arrayRanking.length < 10){
-        historialUsername.innerText = arrayRanking; 
-         }
-       /*  historialUsername.innerText = localStorage.getItem("username");
-        historialScore.innerText = localStorage.getItem("score"); */
+sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1]);
     }
+
+    function printHallOfFame() {
+        userNameOne.innerText = sortedArrayRanking[0][0];
+        resultOne.innerText = sortedArrayRanking[0][1] + " " + "sec";
+        userNameTwo.innerText = sortedArrayRanking[1][0];
+        resultTwo.innerText = sortedArrayRanking[1][1] + " " + "sec";
+        userNameThree.innerText = sortedArrayRanking[2][0];
+        resultThree.innerText = sortedArrayRanking[2][1] + " " + "sec";
+        userNameFour.innerText = sortedArrayRanking[3][0];
+        resultFour.innerText = sortedArrayRanking[3][1] + " " + "sec";
+        userNameFive.innerText = sortedArrayRanking[4][0];
+        resultFive.innerText = sortedArrayRanking[4][1] + " " + "sec";
+        userNameSix.innerText = sortedArrayRanking[5][0];
+        resultSix.innerText = sortedArrayRanking[5][1] + " " + "sec";
+        userNameSeven.innerText = sortedArrayRanking[6][0];
+        resultSeven.innerText = sortedArrayRanking[6][1] + " " + "sec";
+        userNameEigth.innerText = sortedArrayRanking[7][0];
+        resultEigth.innerText = sortedArrayRanking[7][1] + " " + "sec";
+        userNameNine.innerText = sortedArrayRanking[8][0];
+        resultNine.innerText = sortedArrayRanking[8][1] + " " + "sec";
+        userNameTen.innerText = sortedArrayRanking[9][0];
+        resultTen.innerText = sortedArrayRanking[9][1] + " " + "sec";
+       }
+    
 
 function playGame(){
     startTime = new Date();
@@ -77,10 +120,6 @@ function stopGame(){
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
         setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
-        /* localStorage.setItem("score", JSON.stringify(responseTime)); */ //deprecated since Edgar worked on the upload of the data
-        /* historialUsername.innerText = localStorage.getItem("username");
-        historialScore.innerText = responseTime; */
-        
     }
     else{
         clearTimeout(timerID);
@@ -88,13 +127,12 @@ function stopGame(){
 }
 
 function showTimeResultInHallOfFame(responseTime){
-    resultOne.innerText = responseTime;
+    resultInProgress.innerText = responseTime;
 }
 
-/* No tocar abajo */
 
-function remark(responseTime)
-{
+
+function remark(responseTime){
     var responseString="";
     if (responseTime < 0.70)
         responseString="Well done!";
@@ -112,13 +150,14 @@ function finishGame(){
     gameScore.style.display = "flex";
     windowGame.style.transform = "translateY(-559vh)";
     stopGame();
-    dataHandler()
+    dataHandler();
+    sortArray(); 
+    printHallOfFame();
 }
 
 
 function comeBackToFirstPage(){
     windowGame.style.transitionDuration = "1s";
-    gameResult.removeChild; //Mirar como eliminar este elemento
     location.reload(); 
 }
 
@@ -178,8 +217,8 @@ function nextPageToRules(){
         windowGame.style.gridTemplateRows= "100% 100%";
         gameStartGame.style.display = "grid";
         const user1 = localStorage.getItem("username");
-        userNameOne.innerText = user1; //RANKING NAME 
-        resultOne.innerText = "Game in progress..."
+        usernameInProgress.innerText = user1; //RANKING NAME 
+        resultInProgress.innerText = "Game in progress..."
     } else {
         invalidUsername.classList.add("invalidUsernameAppear");
         chooseUsernameInput.style.border = "1px solid red";

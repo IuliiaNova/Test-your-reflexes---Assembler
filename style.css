@@ -341,7 +341,7 @@ main{
 #windowScore{
     display: grid;
     height: 99.5%;
-    grid-template-rows: 10% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 10%;
+    grid-template-rows: 10% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 10%;
     grid-template-columns: 100%;
     background-color: rgba(4, 157, 191, 0.5);
     border: 2px solid #049DBF;
