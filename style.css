@@ -2,7 +2,7 @@
 :root{ 
     --height-window-game-cards: 100%;
     --width-window-game-cards: 100%;
-  }
+}
 
 *{
     font-family: 'Play', sans-serif;
@@ -102,7 +102,7 @@ main{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
-    background-color: rgba(4, 157, 191, 0.8);
+    background-color: rgba(4, 157, 191, 0.7);
     color: #0D2673;
 }
 
@@ -319,7 +319,7 @@ main{
     border-top-left-radius: 10px;
     border-top-right-radius: 10px;
     border: none;
-    background-color: rgba(4, 157, 191, 0.8);
+    background-color: rgba(4, 157, 191, 0.7);
     color: #0D2673;
     text-align: center;
 }
@@ -341,7 +341,7 @@ main{
 #windowScore{
     display: grid;
     height: 99.5%;
-    grid-template-rows: 10% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 8.88% 10%;
+    grid-template-rows: 10% 8% 8% 8% 8% 8% 8% 8% 8% 8% 8% 10%;
     grid-template-columns: 100%;
     background-color: rgba(4, 157, 191, 0.5);
     border: 2px solid #049DBF;
@@ -362,15 +362,22 @@ main{
 .score-position{
     border-top: 2px solid #049DBF;
     padding: 0.5rem 0;
+    color: #0D2673;
 }
 
 .score-position p{
-    color: #0D2673;
     font-weight: 700;
     padding: 0;
     margin: 0;
 }
 
+.result-username{
+    color: #0D2673;
+}
+
+.result-time{
+    color: black;
+}
 
 #hallOfFameTextParent{
     display: grid;
@@ -386,4 +393,8 @@ main{
 
 .score-position:nth-child(even) {
     background-color: rgba(13,  38, 115, 0.1);
+}
+
+#divInProgress{
+    background-color:rgba(217,187,43,0.5);
 }
