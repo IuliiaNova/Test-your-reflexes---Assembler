@@ -46,32 +46,24 @@ chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
 usernameButton.addEventListener("click", nextPageToRules);
 
 function playGame(){
-    //Set randon time - set color 
-    // If for buttons color&&next
-
-    let color = ["RED", "BLUE", "GREEN"]; //It should be random of three colors
-    let colorTextOut = document.createElement("p");
-    pushColor.appendChild(colorTextOut);
-    colorTextOut.innerHTML = `${color}`;
     startTime = new Date();
 }
 
 function stopGame(){
     if(gameHasStarted){
-        console.log("Hola")
         endTime=new Date();
         let responseTime=(endTime.getTime()-startTime.getTime()-3000)/1000;
         gameHasStarted=false;
-        let yourResult = document.createElement("p");
-        yourResult.innerText = ("Your response time is: " + responseTime +
+        gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
-        gameResult.appendChild(yourResult);
-        pushColor.removeChild(colorTextOut); //no funciona
+        resultOne.innerText = responseTime; 
+        localStorage.setItem("score", JSON.stringify(responseTime))
     }
     else{
         clearTimeout(timerID);
     }
 }
+
 
 /* No tocar abajo */
 
@@ -100,7 +92,7 @@ function finishGame(){
 function comeBackToFierstPage(){
     windowGame.style.transitionDuration = "1s";
     gameResult.removeChild; //Mirar como eliminar este elemento
-    location. reload()
+    location.reload(); 
 }
 
 
