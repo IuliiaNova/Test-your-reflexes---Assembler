@@ -141,9 +141,9 @@ function dataHandler(){
         if(positionExist)  {
             positionExist.puntuation =responseTime //cambiar Math.random(10) por variable con la puntuacion
         }else{
-            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})     
+            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})
         }
-        localStorage.setItem("puntuation", JSON.stringify(ranking))  
+        localStorage.setItem("puntuation", JSON.stringify(ranking))
     }else{
         localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : responseTime
         }]))
@@ -203,4 +203,3 @@ function getReady(){
     windowGame.style.gridTemplateRows= "100% 100% 100% 100%";
     gameStopGame.style.display = "grid";
 }
-
