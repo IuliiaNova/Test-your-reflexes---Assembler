@@ -105,7 +105,7 @@ sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1]);
         resultNine.innerText = sortedArrayRanking[8][1] + " " + "sec";
         userNameTen.innerText = sortedArrayRanking[9][0];
         resultTen.innerText = sortedArrayRanking[9][1] + " " + "sec";
-       }
+    }
     
 
 function playGame(){
