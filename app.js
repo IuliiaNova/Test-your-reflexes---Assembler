@@ -30,7 +30,7 @@ let startPressed=false;
 let gameHasStarted=false;
 let maxWait=20;
 let timerID;
-
+let responseTime=null;
 
 let userObject = {
     /* userName: ;
@@ -54,7 +54,7 @@ function playGame(){
 function stopGame(){
     if(gameHasStarted){
         endTime=new Date();
-        let responseTime=(endTime.getTime()-startTime.getTime()-3000)/1000;
+        responseTime=(endTime.getTime()-startTime.getTime()-3000)/1000;
         gameHasStarted=false;
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
@@ -90,6 +90,7 @@ function finishGame(){
     windowScore.style.height = "67.5%";
     gameScore.style.display = "flex";
     windowGame.style.transform = "translateY(-559vh)";
+    dataHandler()
     stopGame();
 }
 
@@ -128,7 +129,6 @@ function initGame(){
             dataObject.username = chooseUsernameInput.value;
             windowGame.style.transitionDuration = "1s";
             windowGame.style.transform = "translateY(-100vh)";
-            dataHandler()
         }
 }
 
@@ -139,13 +139,13 @@ function dataHandler(){
     if (ranking !== null){
         let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
         if(positionExist)  {
-            positionExist.puntuation =Math.random(10) //cambiar Math.random(10) por variable con la puntuacion
+            positionExist.puntuation =responseTime //cambiar Math.random(10) por variable con la puntuacion
         }else{
-            ranking.push({username: chooseUsernameInput.value , puntuation : Math.random(10)})     
+            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})     
         }
         localStorage.setItem("puntuation", JSON.stringify(ranking))  
     }else{
-        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : Math.random(10)
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : responseTime
         }]))
     }}
 
