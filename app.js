@@ -23,12 +23,19 @@ const playAgainButton = document.querySelector("#playAgainButton");
 const pushColor = document.querySelector("#pushColor");
 const gameResult = document.querySelector("#gameResult");
 const resultOne = document.querySelector("#resultOne");
+const userNameOne = document.querySelector("#userNameOne");
 let startTime=new Date();
 let endTime=new Date();
 let startPressed=false;
 let gameHasStarted=false;
 let maxWait=20;
 let timerID;
+
+
+let userObject = {
+    /* userName: ;
+    userScore: ;  */
+}
 
 
 startGameButton.addEventListener("click", startGame);
@@ -50,8 +57,7 @@ function stopGame(){
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
         resultOne.innerText = responseTime; 
-        /* let yourResult = document.createElement("p"); */
-        /* gameResult.appendChild(you}rResult); */ 
+        localStorage.setItem("score", JSON.stringify(responseTime))
     }
     else{
         clearTimeout(timerID);
@@ -118,6 +124,10 @@ function nextPageToRules(){
         windowGame.style.transform = "translateY(-100vh)";
         windowGame.style.gridTemplateRows= "100% 100%";
         gameStartGame.style.display = "grid";
+        const user1 = localStorage.getItem("username");
+        userNameOne.innerText = user1; //RANKING NAME 
+        resultOne.innerText = "Game in progress..."
+
     } else {
         invalidUsername.classList.add("invalidUsernameAppear");
         chooseUsernameInput.style.border = "1px solid red";
