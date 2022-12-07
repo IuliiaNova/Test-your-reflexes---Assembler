@@ -33,12 +33,7 @@ let timerID;
 let responseTime=null;
 let ranking = JSON.parse(localStorage.getItem('puntuation'));
 let arrayRanking = [];
-let userObject = {
-    /* userName: ;
-    userScore: ;  */
-}
-
-
+let userObject = {}
 const userNameTwo = document.querySelector("#userNameTwo");
 const resultTwo = document.querySelector("#resultTwo");
 const userNameThree = document.querySelector("#userNameThree");
@@ -171,15 +166,10 @@ function finishGame(){
     setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
 }
 
-
 function comeBackToFirstPage(){
     windowGame.style.transitionDuration = "1s";
     location.reload(); 
 }
-
-
-/* HALL OF FAME */
-
 
 function invalidUsernameOut() {
     if (patternUsername.test(chooseUsernameInput.value)||chooseUsernameInput.value=="") {
@@ -215,13 +205,13 @@ function dataHandler(){
         if(positionExist)  {
             positionExist.puntuation =responseTime
         }else{
-            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})     
+            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})
         }
-        localStorage.setItem("puntuation", JSON.stringify(ranking))  
+        localStorage.setItem("puntuation", JSON.stringify(ranking))
     }else{
-        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : responseTime
-        }]))
-    }}
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : responseTime}]))
+    }
+}
 
 function nextPageToRules(){
     event.preventDefault();
@@ -233,7 +223,7 @@ function nextPageToRules(){
         windowGame.style.gridTemplateRows= "100% 100%";
         gameStartGame.style.display = "grid";
         const user1 = localStorage.getItem("username");
-        usernameInProgress.innerText = user1; //RANKING NAME 
+        usernameInProgress.innerText = user1; //RANKING NAME
         resultInProgress.innerText = "Game in progress..."
     } else {
         invalidUsername.classList.add("invalidUsernameAppear");
@@ -251,7 +241,6 @@ function startGame(){
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
     gameHasStarted=true;
-    
 }
 
 function hideGetReady(){
