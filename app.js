@@ -56,7 +56,7 @@ function stopGame(){
         gameHasStarted=false;
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
-        resultOne.innerText = responseTime; 
+        resultOne.innerText = responseTime;
         localStorage.setItem("score", JSON.stringify(responseTime))
     }
     else{
@@ -129,7 +129,6 @@ function nextPageToRules(){
         const user1 = localStorage.getItem("username");
         userNameOne.innerText = user1; //RANKING NAME 
         resultOne.innerText = "Game in progress..."
-
     } else {
         invalidUsername.classList.add("invalidUsernameAppear");
         chooseUsernameInput.style.border = "1px solid red";
