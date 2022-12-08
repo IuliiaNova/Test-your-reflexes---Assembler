@@ -19,11 +19,13 @@ let usernameCorrect = false;
 const stopGameButtonOne = document.querySelector("#stopGameButtonOne");
 const stopGameButtonTwo = document.querySelector("#stopGameButtonTwo");
 const stopGameButtonThree = document.querySelector("#stopGameButtonThree");
+const stopGameButtonFour = document.querySelector("#stopGameButtonFour");
+const stopGameButtonFive = document.querySelector("#stopGameButtonFive");
+const stopGameButtonSix = document.querySelector("#stopGameButtonSix");
+const stopGameButtonSeven = document.querySelector("#stopGameButtonSeven");
 const playAgainButton = document.querySelector("#playAgainButton");
 const pushColor = document.querySelector("#pushColor");
 const gameResult = document.querySelector("#gameResult");
-const resultOne = document.querySelector("#resultOne");
-const userNameOne = document.querySelector("#userNameOne");
 let startTime=new Date();
 let endTime=new Date();
 let startPressed=false;
@@ -34,31 +36,22 @@ let responseTime=null;
 let ranking = JSON.parse(localStorage.getItem('puntuation'));
 let arrayRanking = [];
 let userObject = {}
-const userNameTwo = document.querySelector("#userNameTwo");
-const resultTwo = document.querySelector("#resultTwo");
-const userNameThree = document.querySelector("#userNameThree");
-const resultThree = document.querySelector("#resultThree");
-const userNameFour = document.querySelector("#userNameFour");
-const resultFour = document.querySelector("#resultFour");
-const userNameFive = document.querySelector("#userNameFive");
-const resultFive = document.querySelector("#resultFive");
-const userNameSix = document.querySelector("#userNameSix");
-const resultSix = document.querySelector("#resultSix");
-const userNameSeven = document.querySelector("#userNameSeven");
-const resultSeven = document.querySelector("#resultSeven");
-const userNameEigth = document.querySelector("#userNameEigth");
-const resultEigth = document.querySelector("#resultEigth");
-const userNameNine = document.querySelector("#userNameNine");
-const resultNine = document.querySelector("#resultNine");
-const userNameTen = document.querySelector("#userNameTen");
-const resultTen = document.querySelector("#resultTen");
 const usernameInProgress = document.querySelector("#usernameInProgress");
 const resultInProgress = document.querySelector("#resultInProgress");
+const resultUsername = document.querySelectorAll(".result-username");
+const resultTime = document.querySelectorAll(".result-time");
 let sortedArrayRanking = [];
 let activateButton = false;
+let roundText = document.querySelector("#roundText");
 
 startGameButton.addEventListener("click", startGame);
-stopGameButtonOne.addEventListener("click", finishGame);
+stopGameButtonSix.addEventListener("click", finishGame);
+stopGameButtonSeven.addEventListener("click", finishGame);
+stopGameButtonFour.addEventListener("click", roundFour);
+stopGameButtonFive.addEventListener("click", roundFour);
+stopGameButtonTwo.addEventListener("click", roundThree);
+stopGameButtonThree.addEventListener("click", roundThree);
+stopGameButtonOne.addEventListener("click", roundTwo);
 playAgainButton.addEventListener("click", comeBackToFirstPage);
 chooseUsernameInput.addEventListener('focusout', invalidUsernameOut);
 chooseUsernameInput.addEventListener('focusin', invalidUsernameIn);
@@ -71,7 +64,8 @@ resultInProgress.innerText = "for an username...";
 
 if (ranking !== null) {
     sortArray();
-    printHallOfFame();
+    printHallOfFameUsername();
+    printHallOfFameTime();
 }
 
 function sortArray(){
@@ -80,29 +74,20 @@ function sortArray(){
         arrayRanking.push(Object.values(ranking[i]))
     }
     sortedArrayRanking = arrayRanking.sort((a, b) => a[1] - b[1]);
+    console.log({sortedArrayRanking})
 }
 
-function printHallOfFame() {
-    userNameOne.innerText = sortedArrayRanking[0][0];
-    resultOne.innerText = sortedArrayRanking[0][1] + " " + "sec";
-    userNameTwo.innerText = sortedArrayRanking[1][0];
-    resultTwo.innerText = sortedArrayRanking[1][1] + " " + "sec";
-    userNameThree.innerText = sortedArrayRanking[2][0];
-    resultThree.innerText = sortedArrayRanking[2][1] + " " + "sec";
-    userNameFour.innerText = sortedArrayRanking[3][0];
-    resultFour.innerText = sortedArrayRanking[3][1] + " " + "sec";
-    userNameFive.innerText = sortedArrayRanking[4][0];
-    resultFive.innerText = sortedArrayRanking[4][1] + " " + "sec";
-    userNameSix.innerText = sortedArrayRanking[5][0];
-    resultSix.innerText = sortedArrayRanking[5][1] + " " + "sec";
-    userNameSeven.innerText = sortedArrayRanking[6][0];
-    resultSeven.innerText = sortedArrayRanking[6][1] + " " + "sec";
-    userNameEigth.innerText = sortedArrayRanking[7][0];
-    resultEigth.innerText = sortedArrayRanking[7][1] + " " + "sec";
-    userNameNine.innerText = sortedArrayRanking[8][0];
-    resultNine.innerText = sortedArrayRanking[8][1] + " " + "sec";
-    userNameTen.innerText = sortedArrayRanking[9][0];
-    resultTen.innerText = sortedArrayRanking[9][1] + " " + "sec";
+function printHallOfFameUsername() {
+    for (let i = 0; i < ranking.length && i < 10; i++){
+        let hola = sortedArrayRanking[i][0];
+        resultUsername[i].innerText = sortedArrayRanking[i][0];
+    }
+}
+
+function printHallOfFameTime() {
+    for (let i = 0; i < ranking.length && i < 10; i++){
+        resultTime[i].innerText = sortedArrayRanking[i][1] + " sec";
+    }
 }
 
 function playGame(){
@@ -132,40 +117,37 @@ function showTimeResultInHallOfFame(responseTime){
             i=10;
         }
         else if (i==9){
-            console.log("Inside else i =9")
             usernameInProgress.innerText = "Sorry " + user1 + ". Your time of " + responseTime;
             resultInProgress.innerText = "did not make it to the top ten";
         }
     }
-    console.log("llegue")
     usernameInProgress.style.fontSize ="0.8rem";
     resultInProgress.style.fontSize ="0.8rem";
 }
 
 function remark(responseTime){
     var responseString="";
-    if (responseTime < 0.70)
+    if (responseTime < 6.00)
         responseString="Well done!";
-    if (responseTime >=0.70 && responseTime < 1.20)
+    if (responseTime >=5.00 && responseTime < 8.00)
         responseString="Keep practising!";
-    if (responseTime >=1.20)
+    if (responseTime >=8.00)
         responseString="Did you fall asleep?";
     return responseString;
 }
 
 function finishGame(){
-    if(activateButton===true){ 
-        windowGame.style.transitionDuration = "1s";
-        windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
-        windowScore.style.height = "67.5%";
-        gameScore.style.display = "flex";
-        windowGame.style.transform = "translateY(-559vh)";
-        stopGame();
-        dataHandler();
-        sortArray();
-        setTimeout(printHallOfFame, 1000);
-        setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
-    }
+    windowGame.style.transitionDuration = "1s";
+    windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
+    windowScore.style.height = "67.5%";
+    gameScore.style.display = "flex";
+    windowGame.style.transform = "translateY(-556vh)";
+    stopGame();
+    dataHandler();
+    sortArray();
+    setTimeout(printHallOfFameUsername, 1000);
+    setTimeout(printHallOfFameTime, 1000);
+    setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
 }
 
 function comeBackToFirstPage(){
@@ -203,15 +185,15 @@ function initGame(){
 function dataHandler(){
     event.preventDefault();
     if (ranking !== null){
-        let positionExist = ranking.find(puesto =>puesto.username === chooseUsernameInput.value);
-        if(positionExist)  {
-            positionExist.puntuation =responseTime
+        let positionExist = ranking.find(puesto => puesto.username === chooseUsernameInput.value);
+        if(positionExist){
+            positionExist.puntuation = responseTime;
         }else{
-            ranking.push({username: chooseUsernameInput.value , puntuation : responseTime})
+            ranking.push({username: chooseUsernameInput.value, puntuation: responseTime})
         }
         localStorage.setItem("puntuation", JSON.stringify(ranking))
     }else{
-        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value , puntuation : responseTime}]))
+        localStorage.setItem("puntuation", JSON.stringify([{username: chooseUsernameInput.value, puntuation: responseTime}]))
     }
 }
 
@@ -235,21 +217,21 @@ function nextPageToRules(){
 
 function startGame(){
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-190vh)";
+    windowGame.style.transform = "translateY(-195vh)";
     setTimeout(showThreeCountDown, 2000);
     setTimeout(showTwoCountDown, 3000);
     setTimeout(showOneCountDown, 4000);
     setTimeout(getReady, 5000);
     setTimeout(activateButtonGame, 6000);
-
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
     gameHasStarted=true;
+    windowScore.style.height = "97.2%";
 }
 
 function activateButtonGame(){
     stopGameButtonOne.style.backgroundColor = "#cccc33";
-    activateButton=true;
+    activateButton = true;
 }
 
 function showThreeCountDown(){
@@ -271,7 +253,150 @@ function showOneCountDown(){
 function getReady(){
     oneCountDown.style.display = "none";
     windowGame.style.transitionDuration = "1s";
-    windowGame.style.transform = "translateY(-286vh)";
+    windowGame.style.transform = "translateY(-288vh)";
     windowGame.style.gridTemplateRows= "100% 100% 100% 100%";
     gameStopGame.style.display = "grid";
+    windowScore.style.height = "98.6%";
 }
+
+function roundTwo(){
+    if (activateButton == true){
+        stopGameButtonOne.style.display= "none";
+        stopGameButtonThree.style.display= "grid";
+        roundText.innerText = "ROUND 2";
+        roundText.style.top= "22%";
+        windowScore.style.height = "99.2%";
+    }
+}
+
+function roundThree(){
+    stopGameButtonTwo.style.display= "none";
+    stopGameButtonThree.style.display= "none";
+    stopGameButtonFive.style.display= "grid";
+    roundText.innerText = "ROUND 3";
+}
+
+function roundFour(){
+    stopGameButtonFour.style.display= "none";
+    stopGameButtonFive.style.display= "none";
+    stopGameButtonSeven.style.display= "none";
+    stopGameButtonSix.style.display= "grid";
+    setInterval(function(){
+        stopGameButtonSeven.style.display= "grid";
+        stopGameButtonSix.style.display= "none";
+    }, 1800);
+    setInterval(function(){
+        stopGameButtonSeven.style.display= "none";
+        stopGameButtonSix.style.display= "grid";
+    }, 3600);
+    roundText.innerText = "ROUND 4";
+}
+
+
+
+// grab all DIV elements in the document
+let buttons = document.querySelectorAll('.stop-game-button');
+
+// helper method to get a multitude of a
+// random number as an integer
+const rand = (multi) => {
+    return parseInt(multi * Math.random() ,10);
+}
+
+// get width and height of the window
+let ww = (window.innerWidth)*0.70;
+let wh = (window.innerHeight)*0.95;
+
+// define biggest possible value as constraint
+let constraint = Math.min(ww/4, wh/4);
+
+// move the dots by changing the CSS values
+function move(){
+
+  // loop over all DIV elements
+  buttons.forEach((button) => {
+
+    // Balls can be the width of the constraint
+    // or less
+    let w = rand(constraint);
+
+    // x and y position limited to screen space
+    let x = rand((ww - w));
+    let y = rand((wh - w));
+
+    // apply styles
+    button.style.width = w + 30 + 'px';
+    button.style.height = w + 30 + 'px';
+    button.style.top = y + 'px';
+    button.style.left = x + 'px';
+    button.style.borderRadius = Math.floor(Math.random() * 101) + '%';
+    button.style.transform = "rotate("+Math.floor(Math.random() * 361)
+    +"deg)";
+
+    // 'move' dot with 900ms or more
+    button.style.transition = (rand(300) + 700) +'ms';
+
+    // apply random colour
+    button.style.background = `rgba(
+      ${rand(255)},
+      ${rand(255)},
+      ${rand(255)},
+      ${Math.random() + 0.5}
+    )`;
+  });
+}
+
+// change dots every second
+window.setInterval(move, 900);
+
+let buttonsTwo = document.querySelectorAll('.stop-game-button-two');
+
+function moveTwo(){
+    buttonsTwo.forEach((button) => {
+    let w = rand(constraint);
+    let x = rand((ww - w));
+    let y = rand((wh - w));
+    button.style.width = w + 'px';
+    button.style.height = w + 'px';
+    button.style.top = y + 'px';
+    button.style.left = x + 'px';
+    button.style.borderRadius = Math.floor(Math.random() * 101) + '%';
+    button.style.transform = "rotate("+Math.floor(Math.random() * 361)
+    +"deg)";
+    button.style.transition = 0 + 'ms';
+    button.style.background = `rgba(
+      ${rand(255)},
+      ${rand(255)},
+      ${rand(255)},
+      ${Math.random() + 0.5}
+    )`;
+  });
+}
+
+window.setInterval(moveTwo, 700);
+
+let buttonsThree = document.querySelectorAll('.stop-game-button-three');
+
+function moveThree(){
+    constraint = Math.min(ww/6, wh/6);
+    buttonsThree.forEach((button) => {
+    let w = rand(constraint);
+    let x = rand((ww - w));
+    let y = rand((wh - w));
+    button.style.width = w + 'px';
+    button.style.height = w + 'px';
+    button.style.top = y + 'px';
+    button.style.left = x + 'px';
+    button.style.borderRadius = Math.floor(Math.random() * 101) + '%';
+    button.style.transform = "rotate("+Math.floor(Math.random() * 361)
+    +"deg)";
+    button.style.transition = 800 +'ms';
+    button.style.background = `rgba(
+      ${rand(255)},
+      ${rand(255)},
+      ${rand(255)},
+      ${Math.random() + 0.5}
+    )`;
+  });
+}
+window.setInterval(moveThree, 500); /* 450 */

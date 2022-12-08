@@ -31,7 +31,7 @@
                 </div>
                 <form id="gameUsernameForm">
                     <label id="chooseUsernameLabel" for="username" class="game-username-form-elements">Introduce your username</label>
-                    <input type="text" id="chooseUsernameInput" name="username" class="game-username-form-elements" required>
+                    <input type="text" id="chooseUsernameInput" name="username" class="game-username-form-elements" maxlength="6">
                     <button id="usernameButton" class="game-username-form-elements">Start</button>
                 </form>
                 <p id="invalidUsername">Invalid username. Only numbers, "-" and "_" are allowed.</p>
@@ -39,7 +39,7 @@
             <div id="gameStartGame">
                 <h2>RULES</h2>
                 <div></div>
-                <p>Press the button indicated as quick as you can. Don't fall asleep or you'll end up being the last of the class.<br>Follow the text, not the colors.</p>
+                <p>Press the button as quick as you can. There are four rounds, each one being harder. The timer will start when the first button turns to yellow.<br>Don't fall asleep or you'll end up being the last of the class!</p>
                 <button id="startGameButton">Start game</button>
             </div>
             <div id="gameGetReady">
@@ -49,7 +49,14 @@
                 <p id="oneCountDown">1</p>
             </div>
             <div id="gameStopGame">
-                <button class="stop-game-button" id="stopGameButtonOne">BE QUICK</button>
+                <button id="stopGameButtonOne">BE QUICK</button>
+                <button class="stop-game-button" id="stopGameButtonTwo"></button>
+                <button class="stop-game-button" id="stopGameButtonThree"></button>
+                <button class="stop-game-button-two" id="stopGameButtonFour"></button>
+                <button class="stop-game-button-two" id="stopGameButtonFive"></button>
+                <button class="stop-game-button-three" id="stopGameButtonSix"></button>
+                <button class="stop-game-button-three" id="stopGameButtonSeven"></button>
+                <p id="roundText">ROUND 1</p>
             </div>
             <div id="gameScore">
                 <div id="gameScoreParent">
