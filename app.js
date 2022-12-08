@@ -304,7 +304,7 @@ const rand = (multi) => {
 }
 
 // get width and height of the window
-let ww = (window.innerWidth)*0.70;
+let ww = (window.innerWidth)*0.65;
 let wh = (window.innerHeight)*0.95;
 
 // define biggest possible value as constraint
