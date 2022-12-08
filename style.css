@@ -244,7 +244,7 @@ main{
     height: 300%;
     width: 90%;
     border: none;
-    background-color: #D9BB2B;
+    background-color: grey;
     font-weight: 700;
     letter-spacing: 0.25rem;
 }

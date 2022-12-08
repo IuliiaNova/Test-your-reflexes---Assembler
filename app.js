@@ -55,7 +55,7 @@ const resultTen = document.querySelector("#resultTen");
 const usernameInProgress = document.querySelector("#usernameInProgress");
 const resultInProgress = document.querySelector("#resultInProgress");
 let sortedArrayRanking = [];
-
+let activateButton = false;
 
 startGameButton.addEventListener("click", startGame);
 stopGameButtonOne.addEventListener("click", finishGame);
@@ -112,7 +112,7 @@ function playGame(){
 function stopGame(){
     if(gameHasStarted){
         endTime=new Date();
-        responseTime=(endTime.getTime()-startTime.getTime()-3000)/1000;
+        responseTime=(endTime.getTime()-startTime.getTime()-4000)/1000;
         gameHasStarted=false;
         gameResult.innerText = ("Your response time is: " + responseTime +
         " seconds " + "\n" + remark(responseTime));
@@ -154,21 +154,23 @@ function remark(responseTime){
 }
 
 function finishGame(){
-    windowGame.style.transitionDuration = "1s";
-    windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
-    windowScore.style.height = "67.5%";
-    gameScore.style.display = "flex";
-    windowGame.style.transform = "translateY(-559vh)";
-    stopGame();
-    dataHandler();
-    sortArray();
-    setTimeout(printHallOfFame, 1000);
-    setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
+    if(activateButton===true){ 
+        windowGame.style.transitionDuration = "1s";
+        windowGame.style.gridTemplateRows = "100% 100% 100% 100% 100%";
+        windowScore.style.height = "67.5%";
+        gameScore.style.display = "flex";
+        windowGame.style.transform = "translateY(-559vh)";
+        stopGame();
+        dataHandler();
+        sortArray();
+        setTimeout(printHallOfFame, 1000);
+        setTimeout(function(){showTimeResultInHallOfFame(responseTime);}, 1000);
+    }
 }
 
 function comeBackToFirstPage(){
     windowGame.style.transitionDuration = "1s";
-    location.reload(); 
+    location.reload();
 }
 
 function invalidUsernameOut() {
@@ -234,16 +236,23 @@ function nextPageToRules(){
 function startGame(){
     windowGame.style.transitionDuration = "1s";
     windowGame.style.transform = "translateY(-190vh)";
-    setTimeout(hideGetReady, 2000);
+    setTimeout(showThreeCountDown, 2000);
     setTimeout(showTwoCountDown, 3000);
     setTimeout(showOneCountDown, 4000);
     setTimeout(getReady, 5000);
+    setTimeout(activateButtonGame, 6000);
+
     windowGame.style.gridTemplateRows= "100% 100% 100%";
     gameGetReady.style.display = "grid";
     gameHasStarted=true;
 }
 
-function hideGetReady(){
+function activateButtonGame(){
+    stopGameButtonOne.style.backgroundColor = "#cccc33";
+    activateButton=true;
+}
+
+function showThreeCountDown(){
     getReadyCountDown.style.display = "none";
     threeCountDown.style.display = "grid";
     playGame();
