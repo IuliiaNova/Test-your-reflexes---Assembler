@@ -134,7 +134,7 @@ main{
 #gameStartGame{
     margin-top: 5vh;
     display: none;
-    grid-template-rows: 15% 10% 30% auto;
+    grid-template-rows: 10% 15% 30% auto;
     grid-template-columns: 40vw;
     justify-content: center;
     align-content: center;
@@ -155,7 +155,7 @@ main{
 #gameStartGame p{
   /*   line-height: 1.5rem; */
     color: rgb(223, 223, 223);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 700;
     text-align: justify;
     text-justify: inter-word;
@@ -228,6 +228,7 @@ main{
 
 /* PRESS BUTTON */
 #gameStopGame{
+    position: relative;
     display: none;
     grid-template-rows: auto;
     justify-content: center;
@@ -238,15 +239,111 @@ main{
     border-radius: 25px;
 }
 
+#roundText{
+    position: absolute;
+    top: 20%;
+    left: 34%;
+    font-size: 4rem;
+    font-weight: 700;
+    color: rgba(13,38,115, 0.5);
+    z-index: 1;
+}
+
 #stopGameButtonOne{
     color: #0D2673;
     border-radius: 50%;
     height: 300%;
     width: 90%;
     border: none;
-    background-color: #D9BB2B;
+    background-color: grey;
     font-weight: 700;
     letter-spacing: 0.25rem;
+    transition: 500ms;
+    z-index: 2;
+}
+
+#stopGameButtonTwo {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(30,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
+}
+
+#stopGameButtonThree {
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    width: 60px;
+    height: 60px;
+    background: rgba(230,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
+}
+
+#stopGameButtonFour {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(30,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
+}
+
+#stopGameButtonFive {
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    width: 60px;
+    height: 60px;
+    background: rgba(230,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
+}
+
+#stopGameButtonSix {
+    display: none;
+    position: absolute;
+    top: 50px;
+    left: 50px;
+    width: 100px;
+    height: 100px;
+    background: rgba(30,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
+}
+
+#stopGameButtonSeven {
+    display: none;
+    position: absolute;
+    top: 200px;
+    left: 500px;
+    width: 60px;
+    height: 60px;
+    background: rgba(230,50,80,1);
+    border-radius: 50% 50%;
+    transition: 500ms;
+    border: none;
+    z-index: 2;
 }
 
 /* GAME SCORE */
@@ -396,5 +493,5 @@ main{
 }
 
 #divInProgress{
-    background-color:rgba(217,187,43,0.5);
+    background-color:rgba(212, 204, 161, 0.5);
 }
